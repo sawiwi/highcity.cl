@@ -11,12 +11,12 @@ export const RealtorSendEmailData = {
 export const AboutInformation = {
     desc: 'Somos una empresa de profesionales expertos inmobiliarios, con más de 8 años de experiencia reconocidos y enfocados en ofrecer Servicios integrales en el rubro de bienes raíces, reconocidos por nuestros clientes satisfechos por la eficiencia y eficacia en nuestros servicios.',
     mision: {
-        icon:'<i class="bi bi-patch-check flex-shrink-0"></i>',
+        // icon:'<i class="bi bi-patch-check flex-shrink-0"></i>',
         title:'Misión',
         desc:'Nuestra prioridad es brindar un servicio de calidad con  nuestras  características, eficiencia, seguridad, confianza y rapidez.'
     },
     vision: {
-        icon:'<i class="bi bi-easel flex-shrink-0"></i>',
+        // icon:'<i class="bi bi-easel flex-shrink-0"></i>',
         title:'Visión',
         desc:'Ser una empresa reconocida en el mercado por nuestro servicios proactivo y eficaz a corto plazo. Lograr fidelizar a nuestros clientes a través del tiempo, como se ha logrado hasta el momento.'
     },

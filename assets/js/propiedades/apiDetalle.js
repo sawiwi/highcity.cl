@@ -81,7 +81,7 @@ splide.mount();
 
 
 document.getElementById('title-dire-prop').innerHTML =
-    `<h2 class="title">${data.title}</h2>
+    `<h2 class="title">${data?.title || "No registra Titulo"}</h2>
     <h5 style="color: rgb(156, 156, 156);">${data.city != undefined && data.city != "" && data.city != null ? data.city : "No registra ciudad" }, ${data.commune != undefined && data.commune != "" && data.commune != null ? data.commune : "No registra comuna"},Chile</h5>
     <h5 class="" style="color: rgb(156, 156, 156);">cod: ${data.id}</h5>
     `
@@ -94,8 +94,8 @@ document.getElementById('title-dire-prop').innerHTML =
 	document.getElementById('caract-prop').innerHTML = `
                     <h3 class="sidebar-title">Caracteristicas</h3>
                     <ul class="mt-3">
-                        <li><a style="font-size: 20px;">Tipo de operación: <span style="font-size: 16px;"> <b>${data?.operation}</b></span></a></li>
-                        <li><a style="font-size: 20px;">Tipo de propiedad: <span style="font-size: 16px;"><b>${data?.types}</b></span></a></li>
+                        <li><a style="font-size: 20px;">Tipo de operación: <span style="font-size: 16px;"> <b>${data?.operation || "No registra"}</b></span></a></li>
+                        <li><a style="font-size: 20px;">Tipo de propiedad: <span style="font-size: 16px;"><b>${data?.types || "No registra"}</b></span></a></li>
                         <li><a style="font-size: 20px;">Estado: <span style="font-size: 16px;"><b>${data?.installment_type || "No registra"}</b></span></a></li>
                         <li><a style="font-size: 20px;"> Superficie M²:<span style="font-size: 16px;"><b>${data?.surface_m2 || "0"} m²</b></span></a></li>
                         <li><a style="font-size: 20px;">Habitación(es): <span style="font-size: 16px;"><b>${data?.bedrooms || "0"}</b></span></a></li>
@@ -114,9 +114,9 @@ document.getElementById('title-dire-prop').innerHTML =
 
 	document.getElementById('data-realtor').innerHTML= `
                 <div class="d-flex justify-content-center">
-                    <img class="rounded-circle w-50 py-4" src="${data?.realtor.img || "assets/img/Sin.png"}">
+                    <img class="w-50 py-4" src="${data?.realtor.img || "assets/img/logo/Logo SII-HCP 10kb.png"}">
                 </div>
-                <h4>${data?.realtor.name} ${data.realtor.lastName}</h4>
+                <h4>${data?.realtor.name || ""} ${data.realtor.lastName || ""}</h4>
                 <p>${data?.realtor.mail || "No registra email"}</p>
                 <p>${data.realtor.contactPhone != null && data.realtor.contactPhone != undefined ? data.realtor.contactPhone : "No registra número celular" }</p>
                 <hr>`
