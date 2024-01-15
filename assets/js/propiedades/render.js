@@ -96,8 +96,8 @@ function setContainerLoading(isLoading){
 
 
 export default async function renderCall(QueryParams = undefined, NumberPagination = undefined, filtersUrlString = undefined) {
-  console.log('%c==================', 'color:cyan');
-  console.log('%cRender.js Render.js Render.js', 'color:cyan');
+  // console.log('%c==================', 'color:cyan');
+  // console.log('%cRender.js Render.js Render.js', 'color:cyan');
   //* INICIALIZACION DE VARIABLES
   setContainerLoading(true);
   const { CodigoUsuarioMaestro, companyId, realtorId } = PropertyData;
@@ -112,7 +112,7 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
     page1 = NumberPagination;
   }
 
-  console.log('QueryParams ', QueryParams);
+  // console.log('QueryParams ', QueryParams);
   
 
   if (filtersUrlString) {
@@ -122,15 +122,15 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
     filtersUrl = ObjToStr(QueryParams);
     page1 = resetNumberPage();
   }
-  console.log(filtersUrl)
+  // console.log(filtersUrl)
 
   
   if (NumberPagination) {
     pageCall = NumberPagination;
   }
 
-  console.log('pageCall: ', pageCall);
-  console.log('NumberPagination: ', NumberPagination);
+  // console.log('pageCall: ', pageCall);
+  // console.log('NumberPagination: ', NumberPagination);
 
   let response = await getPropertiesForCustomUrl(pageCall, defaultLimit, CodigoUsuarioMaestro, 1, companyId, realtorId, filtersUrl);
   //* Calcular la pagina maxima
@@ -138,14 +138,14 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
   //* Guardar en el localStorage
   localStorage.setItem('globalResponse', JSON.stringify(response));
   localStorage.setItem('maxPage', JSON.stringify(maxPage));
-  console.log('max-page: ', maxPage);
+  // console.log('max-page: ', maxPage);
 
   //! console log para saber el contenido del response despues del if
   console.log('response: ', response)
 
   //* Guardamos el data del response en una variable data 
   let data = response.data;
-  console.log('data: ', data)
+  // console.log('data: ', data)
 
   //* Cambio del Uf
   const response2 = await ExchangeRateServices.getExchangeRateUF();
@@ -173,12 +173,12 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
 
   filtroSelect.addEventListener('change', handleFilterChange);
   function handleFilterChange() {
-      console.log('=========== handleFilterChange ===========')
+      // console.log('=========== handleFilterChange ===========')
       //* Se rescata el value del select
       const selectedValue = filtroSelect.value;
-      console.log(selectedValue);
-      console.log(data);
-      console.log(response);
+      // console.log(selectedValue);
+      // console.log(data);
+      // console.log(response);
     
       if (selectedValue === 'MayorMenor') {
         //* la data ordenada se guarda en response.data
@@ -197,13 +197,13 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
           return priceA - priceB;
         });
       }
-      console.log('dataOrdenadaResponse: ',response);
+      // console.log('dataOrdenadaResponse: ',response);
       //* Se llama al showItems para actualizar las cards
       showItems();
   }
 
   //todo: innerHTML de las propiedades encontradas
-  document.getElementById("total-prop").innerHTML = `<span>${response.meta.totalItems} Propiedades encontradas</span>`;
+  document.getElementById("total-prop").innerHTML = `<span>${response.meta.totalItems} Propiedad(es) encontrada(s)</span>`;
 
   //todo: creacion de la funcion ShowItems
   function showItems() {
@@ -219,7 +219,7 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
               <span class="post-date">${data.operation}</span>
             </div>
             <div class="post-content d-flex flex-column">
-              <h3 class="post-title textLimitClass">${data.title}</h3>
+              <h3 class="post-title textLimitClass ">${data.title}</h3>
               <div class="meta d-flex align-items-center">
                 <div class="d-flex align-items-center">
                   <span class="ps-2">Cod. Prop: ${data.id}</span>
@@ -263,7 +263,7 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
               </div>
               <div class="col-xl-7 d-flex align-items-center" style="padding: 2px;">
                 <div class="post-content text-center">
-                  <h3 class="textLimitClass mb-4" style="font-weight: 700; color:#130060">${data.title}</h3>
+                  <h3 class="textLimitClass  m-2 mb-4 p-2" style="font-weight: 700; color:#130060">${data.title}</h3>
                   <div class="meta d-flex align-items-center">
                     <div class="d-flex align-items-center">
                       <span class="ps-2" style="color:#838893"> 

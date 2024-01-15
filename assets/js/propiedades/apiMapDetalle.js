@@ -5,7 +5,7 @@ export default async function apiCallMapDetail(id, realtorId, statusId, companyI
 
 let {data} = await getPropertiesForId(id, realtorId, statusId, companyId );
 
-let divMapContainer = document.getElementById('map');
+let divMapContainer = document.getElementById('mapadetail');
 if(data.LngLat == null){
     divMapContainer.innerHTML = `No registra ubicación exacta`;
     return;
@@ -24,7 +24,7 @@ console.log(id)
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2VyZ2lvdmVyYWhlcm5hbmRlemJpZGF0YSIsImEiOiJjbDMwZHc4cmswMDdqM2NydmIzYWF0cGl4In0.hsYQFPebleAB4j6mRckMzQ'
 const map = new mapboxgl.Map({
     
-    container: 'map',
+    container: 'mapadetail',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [parseFloat(LngLat[0]), parseFloat(LngLat[1])],

@@ -1,0 +1,18 @@
+
+.mapboxgl-canvas-container {
+    width: 1920px;
+    height: 30vh !important;
+    border-radius: 15px;
+    margin-bottom: 50%;
+  }
+  
+  .mapboxgl-canvas {
+    width: max-content !important;
+  }
+  
+
+#mapadetail {
+    width: 100% !important;
+    height: 30% !important;
+    border-radius: 5px !important;
+  }

@@ -14,6 +14,23 @@ const ufValueAsNumber = parseFloat(ufValue.replace(',', '.'));
 
 let indicadores;
 
+//Agrega y respta  el salto de linea que trae la API para la descripción
+const lineas = data?.description.split('\n');
+const linasList = lineas.map(function(linea){
+    let parrafo = document.createElement('p');
+    parrafo.textContent = linea;
+    return parrafo;
+});
+
+ const contenParrafo = document.getElementById('descript');
+
+ linasList.forEach(function(el){
+    contenParrafo.appendChild(el)
+ })
+
+ //Fin salto de linea
+
+
 //! transformar valor del uf a int
 const cleanedValue = ufValue.replace(/\./g, '').replace(',', '.');
 const ufValueAsInt = parseFloat(cleanedValue).toFixed(0);
@@ -96,29 +113,33 @@ document.getElementById('title-dire-prop').innerHTML =
                     <ul class="mt-3">
                         <li><a style="font-size: 20px;">Tipo de operación: <span style="font-size: 16px;"> <b>${data?.operation || "No registra"}</b></span></a></li>
                         <li><a style="font-size: 20px;">Tipo de propiedad: <span style="font-size: 16px;"><b>${data?.types || "No registra"}</b></span></a></li>
-                        <li><a style="font-size: 20px;">Estado: <span style="font-size: 16px;"><b>${data?.installment_type || "No registra"}</b></span></a></li>
+                        <li><a style="font-size: 20px;">Estado: <span style="font-size: 16px;"><b>${data?.status || "No registra"}</b></span></a></li>
                         <li><a style="font-size: 20px;"> Superficie M²:<span style="font-size: 16px;"><b>${data?.surface_m2 || "0"} m²</b></span></a></li>
                         <li><a style="font-size: 20px;">Habitación(es): <span style="font-size: 16px;"><b>${data?.bedrooms || "0"}</b></span></a></li>
                         <li><a style="font-size: 20px;">Baño(s): <span style="font-size: 16px;"><b>${data?.bathrooms || "0"}</b></span></a></li>
                         <li><a style="font-size: 20px;">Estacionamiento(s): <span style="font-size: 16px;"> <b>${data?.coveredParkingLots || "0"}</b></span></a></li>
                     </ul>`
 
-
-    document.getElementById('descrip-prop').innerHTML = `
-                    <div class="content" >
-                        <h2 class="title">DESCRIPCIÓN</h2>
-                        <p>
-                        ${data?.description || "Sed quo laboriosam qui architecto. Occaecati repellendus omnis dicta inventore tempore provident voluptas mollitia aliquid. Id repellendus quia. Asperiores nihil magni dicta est suscipit perspiciatis. Voluptate ex rerum assumenda dolores nihil quaerat"}
-                        </p>
-                    </div>`
+                    // {lineas.slice(0, lineasIni).map((linea, idx) => (
+                    //     document.getElementById('descrip-prop').innerHTML = `
+                    //     <div class="content" >
+                    //         <h2 class="title">DESCRIPCIÓN</h2>
+                    //         <p key=${idx}>
+                    //             ${linea || "No cuenta"}
+                    //             ${' '}
+                            
+                    //         </p>
+                    //     </div>`
+                    // ))}
+   
 
 	document.getElementById('data-realtor').innerHTML= `
                 <div class="d-flex justify-content-center">
                     <img class="w-50 py-4" src="${data?.realtor.img || "assets/img/logo/Logo SII-HCP 10kb.png"}">
                 </div>
-                <h4>${data?.realtor.name || ""} ${data.realtor.lastName || ""}</h4>
+                <h4>${data?.realtor.name || ""} ${data?.realtor.lastName || ""}</h4>
                 <p>${data?.realtor.mail || "No registra email"}</p>
-                <p>${data.realtor.contactPhone != null && data.realtor.contactPhone != undefined ? data.realtor.contactPhone : "No registra número celular" }</p>
+                <p>+56 ${data?.realtor.contactPhone != null && data?.realtor.contactPhone != undefined ? data?.realtor.contactPhone : "No registra número celular" }</p>
                 <hr>`
 
 				
