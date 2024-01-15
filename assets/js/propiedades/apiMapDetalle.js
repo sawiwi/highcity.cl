@@ -19,10 +19,10 @@ const LngLat = data.LngLat.replace("{", "")
 		.replace(" ", "")
 		.split(":");
 
-console.log(id)
+// console.log(id)
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2VyZ2lvdmVyYWhlcm5hbmRlemJpZGF0YSIsImEiOiJjbDMwZHc4cmswMDdqM2NydmIzYWF0cGl4In0.hsYQFPebleAB4j6mRckMzQ'
-const map = new mapboxgl.Map({
+const mapadetail = new mapboxgl.Map({
     
     container: 'mapadetail',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
@@ -37,7 +37,7 @@ const map = new mapboxgl.Map({
 
             // create the popup
             const popup = new mapboxgl.Popup({ offset: 25 }).setText(`
-            ${data.title}`)
+            ${data?.title}`)
             
             // create DOM element for the marker
             const ubicacion = document.createElement('div');
@@ -49,7 +49,7 @@ const map = new mapboxgl.Map({
             })
                 .setLngLat(UbiProp)
                 .setPopup(popup) // sets a popup on this marker
-                .addTo(map);
+                .addTo(mapadetail);
 
 
             }
