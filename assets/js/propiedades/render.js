@@ -55,7 +55,7 @@ function resetNumberPage() {
 
 function validateImage(image){
   if(image){
-    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg')){
+    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg') || image.endsWith('.JPG') || image.endsWith('.JPEG') ){
       return `<img src=${image} alt="Image" class="img-fluid" style="height:100% !important;width:100%;background-position: center center;background-repeat: no-repeat;background-size: cover; object-fit:cover">`;
     }
     return `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="Image" class="img-fluid" style="height:100% !important;width:100%;background-position: center center;background-repeat: no-repeat;background-size: cover;object-fit:cover">`;
@@ -67,7 +67,7 @@ function validateImage(image){
 
 function validateImageList(image){
   if(image){
-    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg')){
+    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg') || image.endsWith('.JPG') || image.endsWith('.JPEG')){
       return `<img src=${image} alt="Image" class="img-fluid" style="height:100%  !important;width:100%;">`;
     }
     return `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="Image" class="img-fluid" style="height:100% !important;width:100%;object-fit:cover">`;
@@ -141,7 +141,7 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
   // console.log('max-page: ', maxPage);
 
   //! console log para saber el contenido del response despues del if
-  console.log('response: ', response)
+  // console.log('response: ', response)
 
   //* Guardamos el data del response en una variable data 
   let data = response.data;
@@ -215,32 +215,32 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
         <div class="col-xl-4 col-md-6">
           <div class="post-item position-relative h-100">
             <div class="post-img position-relative overflow-hidden" style="height:330px">
-              ${validateImage(data.image)}
-              <span class="post-date">${data.operation}</span>
+              ${validateImage(data?.image)}
+              <span class="post-date">${data?.operation || "No cuenta con operación"}</span>
             </div>
             <div class="post-content d-flex flex-column">
-              <h3 class="post-title textLimitClass ">${data.title}</h3>
+              <h3 class="post-title textLimitClass ">${data?.title || "No cuenta con titulo"}</h3>
               <div class="meta d-flex align-items-center">
                 <div class="d-flex align-items-center">
-                  <span class="ps-2">Cod. Prop: ${data.id}</span>
+                  <span class="ps-2">Cod. Prop: ${data?.id}</span>
                 </div>
               </div>
               <div class="meta d-flex align-items-center">
                 <div class="d-flex align-items-center">
-                  <span class="ps-2"> ${data.city != undefined && data.city != "" && data.city != null ? data.city : "No registra ciudad"}, ${data.commune != undefined && data.commune != "" && data.commune != null ? data.commune : "No registra comuna"},Chile</span>
+                  <span class="ps-2"> ${data?.city !== undefined && data?.city !== "" && data.city !== null ? data?.city : "No registra ciudad"}, ${data?.commune !== undefined && data?.commune !== "" && data?.commune !== null ? data?.commune : "No registra comuna"},Chile</span>
                 </div>
               </div>
               <div class="meta d-flex align-items-center">
                 <div class="d-flex align-items-center">
-                  <span class="ps-2 precio-card"><b>UF ${validationUF(data.currency.isoCode) ? data.price : clpToUf(data.price, ufValueAsNumber)}</b></span>
+                  <span class="ps-2 precio-card"><b>UF ${validationUF(data?.currency?.isoCode) ? data?.price : clpToUf(data?.price, ufValueAsNumber)}</b></span>
                 </div>
                 <span class="px-3 text-black-50">/</span>
                 <div class="d-flex align-items-center">
-                  <span class="ps-2 precio-card"><b>CLP ${validationCLP(data.currency.isoCode) ? parseToCLPCurrency(data?.price) : parseToCLPCurrency(ufToClp(data.price, ufValueAsInt))}</b></span>
+                  <span class="ps-2 precio-card"><b>CLP ${validationCLP(data?.currency?.isoCode) ? parseToCLPCurrency(data?.price) : parseToCLPCurrency(ufToClp(data?.price, ufValueAsInt))}</b></span>
                 </div>
               </div>
               <hr>
-              <a href="/detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${companyId}" target="_blank" class="readmore stretched-link"><span>Ver detalle</span><i class="bi bi-arrow-right"></i></a>
+              <a href="/detalle_propiedad.html?${data?.id}&statusId=${1}&companyId=${companyId}" target="_blank" class="readmore stretched-link"><span>Ver detalle</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -257,40 +257,40 @@ export default async function renderCall(QueryParams = undefined, NumberPaginati
           <div class="card-item">
             <div class="row">
               <div class="col-xl-5" style="height:330px">
-                <a class="card-bg" href="/detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${companyId}" target="_blank">
-                  ${validateImageList(data.image)}
+                <a class="card-bg" href="/detalle_propiedad.html?${data?.id}&statusId=${1}&companyId=${companyId}" target="_blank">
+                  ${validateImageList(data?.image)}
                 </a>
               </div>
               <div class="col-xl-7 d-flex align-items-center" style="padding: 2px;">
                 <div class="post-content text-center">
-                  <h3 class="textLimitClass  m-2 mb-4 p-2" style="font-weight: 700; color:#130060">${data.title}</h3>
+                  <h3 class="textLimitClass  m-2 mb-4 p-2" style="font-weight: 700; color:#130060">${data?.title || "No registra Titulo"}</h3>
                   <div class="meta d-flex align-items-center">
                     <div class="d-flex align-items-center">
                       <span class="ps-2" style="color:#838893"> 
                         <i class='bx bx-map fs-4'style="color: rgb(92, 92, 92);"></i>
-                        ${data.city != undefined && data.city != "" && data.city != null ? data.city : "No registra ciudad"}, ${data.commune != undefined && data.commune != "" && data.commune != null ? data.commune : "No registra comuna"}, Chile</span>
+                        ${data?.city !== undefined && data?.city !== "" && data?.city !== null ? data?.city : "No registra ciudad"}, ${data?.commune !== undefined && data?.commune !== "" && data?.commune !== null ? data?.commune : "No registra comuna"}, Chile</span>
                     </div>
                   </div>
                   <br>
                   <div class="meta">
                     <div class="d-flex align-items-center">
                       <span class="ps-2 text-center" style="color:#838893"> 
-                        Cod. Prop: ${data.id}
+                        Cod. Prop: ${data?.id}
                       </span>
                     </div>
                   </div>
                   <div class="meta d-flex align-items-center mt-5">
                     <div class="d-flex align-items-center">
-                      <span class="ps-2 precio-card-list"><b>UF ${validationUF(data.currency.isoCode) ? data.price : clpToUf(data.price, ufValueAsNumber)}</b></span>
+                      <span class="ps-2 precio-card-list"><b>UF ${validationUF(data?.currency.isoCode) ? data?.price : clpToUf(data?.price, ufValueAsNumber)}</b></span>
                     </div>
                     <span class="px-3 text-black-50">/</span>
                     <div class="d-flex align-items-center">
                       <span class="ps-2 precio-card-list"><b>CLP ${validationCLP(data.currency.isoCode) ? parseToCLPCurrency(data?.price) : parseToCLPCurrency(ufToClp(data.price, ufValueAsInt))}</b></span>
                     </div>
                   </div> 
-                  <span class="post-date-list">${data.types} / ${data.operation}</span>
+                  <span class="post-date-list">${data?.types || "No registra Tipo de inmueble"} / ${data?.operation || "No registra Tipo de operación"}</span>
                   <hr>                
-                  <a href="/detalle_propiedad.html?${data.id}&statusId=${1}&companyId=${companyId}" class="readmore stretched-link " target="_blank"><span>Ver detalle</span><i class="bi bi-arrow-right"></i></a>             
+                  <a href="/detalle_propiedad.html?${data?.id}&statusId=${1}&companyId=${companyId}" class="readmore stretched-link " target="_blank"><span>Ver detalle</span><i class="bi bi-arrow-right"></i></a>             
                 </div>
               </div>
             </div>

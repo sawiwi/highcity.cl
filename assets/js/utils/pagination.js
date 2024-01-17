@@ -16,12 +16,12 @@ export default async function paginationCall(resetNumber) {
   }
 
   let storedFiltersUrl = localStorage.getItem('globalFiltersUrl');
-  console.log('storedFiltersUrl: ',storedFiltersUrl);
+  // console.log('storedFiltersUrl: ',storedFiltersUrl);
 
   async function handleNextPage() {
     disabledButton();
     if(maxPage == 1){
-      console.log('no se puede avanzar, si hay 1 pag')
+      // console.log('no se puede avanzar, si hay 1 pag')
       activeButton(currentPage,maxPage)
       return;
     }
@@ -37,7 +37,7 @@ export default async function paginationCall(resetNumber) {
   async function handlePrevPage() {
     disabledButton();
     if(maxPage == 1){
-      console.log('no se puede retroceder, si hay 1 pag')
+      // console.log('no se puede retroceder, si hay 1 pag')
       activeButton(currentPage,maxPage)
       return;
     }

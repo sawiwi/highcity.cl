@@ -51,7 +51,7 @@ export default async function apiCallMap() {
     
 
 
-    console.log('data en map: ',data);
+    // console.log('data en map: ',data);
     const promiseMap = new Promise(
         (resolve)=>{
         data.map(data => {    
@@ -65,9 +65,9 @@ export default async function apiCallMap() {
 
                 // create the popup
                 const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
-                <span>${data.title}</span>
+                <span>${data?.title || "No registra titulo"}</span>
                 <br>
-                <a href="/detalle_propiedad.html?${data.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" target="_blank" name="VerDetalle"  class="more d-flex align-items-center float-start">
+                <a href="/detalle_propiedad.html?${data?.id}&realtorId=${realtorId}&statusId=${1}&companyId=${companyId}" target="_blank" name="VerDetalle"  class="more d-flex align-items-center float-start">
                 <span class="label" id="getProperty">Ver Detalle</span>
                 <span class="arrow"><span class="icon-keyboard_arrow_right"></span></span>
                 </a>`)
