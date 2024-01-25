@@ -55,7 +55,7 @@ function resetNumberPage() {
 
 function validateImage(image){
   if(image){
-    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg') || image.endsWith('.JPG') || image.endsWith('.JPEG') ){
+    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg') || image.endsWith('.JPG') || image.endsWith('.JPEG') || image.endsWith('.PNG') || image.endsWith('.AVIF') ){
       return `<img src=${image} alt="Image" class="img-fluid" style="height:100% !important;width:100%;background-position: center center;background-repeat: no-repeat;background-size: cover; object-fit:cover">`;
     }
     return `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="Image" class="img-fluid" style="height:100% !important;width:100%;background-position: center center;background-repeat: no-repeat;background-size: cover;object-fit:cover">`;
@@ -67,7 +67,7 @@ function validateImage(image){
 
 function validateImageList(image){
   if(image){
-    if(image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg') || image.endsWith('.JPG') || image.endsWith('.JPEG')){
+    if(image.endsWith('.jpg') || image.endsWith('.png')  || image.endsWith('.jpeg') || image.endsWith('.JPG') || image.endsWith('.JPEG')|| image.endsWith('.PNG')|| image.endsWith('.AVIF')){
       return `<img src=${image} alt="Image" class="img-fluid" style="height:100%  !important;width:100%;">`;
     }
     return `<img src='https://res.cloudinary.com/dbrhjc4o5/image/upload/v1681933697/unne-media/errors/not-found-img_pp5xj7.jpg' alt="Image" class="img-fluid" style="height:100% !important;width:100%;object-fit:cover">`;

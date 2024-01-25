@@ -99,13 +99,13 @@ splide.mount();
 
 document.getElementById('title-dire-prop').innerHTML =
     `<h2 class="title">${data?.title || "No registra Titulo"}</h2>
-    <h5 style="color: rgb(156, 156, 156);">${data.city != undefined && data.city != "" && data.city != null ? data.city : "No registra ciudad" }, ${data.commune != undefined && data.commune != "" && data.commune != null ? data.commune : "No registra comuna"},Chile</h5>
+    <h5 style="color: rgb(156, 156, 156);">${data?.city != undefined && data?.city != "" && data?.city != null ? data?.city : "No registra ciudad" }, ${data.commune != undefined && data.commune != "" && data.commune != null ? data.commune : "No registra comuna"},Chile</h5>
     <h5 class="" style="color: rgb(156, 156, 156);">cod: ${data.id}</h5>
     `
 
 	document.getElementById('price-prop').innerHTML= `
-    <h2 class="title" style="font-size: 43px;">UF  ${validationUF(data.currency.isoCode) ? data.price : clpToUf(data.price, ufValueAsNumber)}</h2>
-    <h5 style="color: rgb(156, 156, 156);">CLP ${validationCLP(data.currency.isoCode) ? parseToCLPCurrency(data?.price): parseToCLPCurrency(ufToClp(data.price, ufValueAsInt))}</h5>
+    <h2 class="title" style="font-size: 43px;">UF  ${validationUF(data?.currency.isoCode) ? data.price : clpToUf(data.price, ufValueAsNumber)}</h2>
+    <h5 style="color: rgb(156, 156, 156);">CLP ${validationCLP(data?.currency.isoCode) ? parseToCLPCurrency(data?.price): parseToCLPCurrency(ufToClp(data.price, ufValueAsInt))}</h5>
     `
 
 	document.getElementById('caract-prop').innerHTML = `
